@@ -6,7 +6,7 @@ const getTemperamentsHandler = async (req, res) => {
   try {
     await getAllTemperaments();
     const allTemperaments = await Temperament.findAll();
-    res.send(allTemperaments)
+    res.status(200).send(allTemperaments)
   }
   catch (error) {
     return res.status(500).json(error.message)

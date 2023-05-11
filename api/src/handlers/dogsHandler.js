@@ -3,14 +3,13 @@ const getDogsById = require("../controllers/getDogById");
 const getDogsByName = require("../controllers/getDogsByName");
 const postNewDog = require("../controllers/postNewDog");
 
-
 // Maneja la ruta GET de todos los perros o por nombre 
 const getDogsHandler = async (req, res) => {
   try {
     const { name } = req.query;
 
     // Si no me pasan el name, traigo todos
-    if(!name) return res.send(await getAllDogs());
+    if(!name) return res.status(200).send(await getAllDogs());
     return res.send(await getDogsByName(name));
   }
   catch (error) {
@@ -23,7 +22,7 @@ const getDogHandler = async (req, res) => {
   const { id } = req.params;
   try {
     const response = await getDogsById(id);
-    return res.send(response)
+    return res.status(200).json(response)
   }
   catch (error) {
     return res.status(500).json(error.message)
@@ -37,7 +36,7 @@ const postDogHandler = async (req, res) => {
 
     const newDog = await postNewDog(name, image, height, weight, life_span, temperament)
 
-    res.send(newDog);
+    res.status(200).json(newDog);
   }
   catch (error) {
     return res.status(404).json(error.message)

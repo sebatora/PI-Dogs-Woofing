@@ -1,10 +1,10 @@
-const { Dog, Temperament } = require("../db")
+const { Dog } = require("../db")
 
 // Crea un nuevo perro y lo guarda en la DB
 
-const postNewDog = async (name, image, height, weight, life_span, temperament) => {
+const postNewDog = async (name, image, height, weight, life_span, temperaments) => {
 
-  if(!name || !image || !height || !weight || !life_span || !temperament) throw Error ("Woof! Missing Dog Information!")
+  if(!name || !image || !height || !weight || !life_span || !temperaments) throw Error ("Woof! Missing Dog Information!")
 
   const newDog = await Dog.create({
     name,
@@ -12,8 +12,8 @@ const postNewDog = async (name, image, height, weight, life_span, temperament) =
     height,
     weight,
     life_span,
-    temperament
   })
+  await newDog.addTemperaments(temperaments)
 
   return newDog;
 }
