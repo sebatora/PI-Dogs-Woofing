@@ -1,9 +1,5 @@
-import Landing from './Landing/Landing'
-import Navbar from './Navbar/Navbar';
-import Dogs from './Dogs/Dogs';
-import Pagination from './Pagination/Pagination';
-import Detail from './Detail/Detail';
-import Form from './Form/Form';
-import About from './About/About';
+import Dog from "./Dog/Dog"
+import Dogs from "./Dogs/Dogs"
+import Navbar from "./Navbar/Navbar"
 
-export { Landing, Navbar, Dogs, Pagination, Detail, Form, About }
+export { Dog, Dogs, Navbar }

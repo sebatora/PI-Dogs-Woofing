@@ -2,7 +2,8 @@
 import './App.css'
 
 //COMPONENTS
-import { Landing, Navbar, Dogs, Detail, Form, About } from "./components/index"
+import { Landing, Home, Detail, Form, About,  } from "./views"
+import { Navbar } from './components';
 
 
 //HOOKS
@@ -19,7 +20,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Landing />} />
 
-        <Route path="/home" element={<Dogs />} />
+        <Route path="/home" element={<Home />} />
 
         <Route path="/detail/:id" element={<Detail />} />
 
