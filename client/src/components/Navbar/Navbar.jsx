@@ -12,7 +12,7 @@ function Navbar() {
         </Link>
 
         <Link to="/create" className={style.navFavourites}>
-          <button className="btn">Añadir</button>
+          <button className="btn">Añade tu perro</button>
         </Link>
 
         <Link to="/about" className={style.navAbout}>

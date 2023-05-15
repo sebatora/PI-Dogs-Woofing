@@ -1,8 +1,8 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { getDogs } from '../../redux/actions'
-import { Dogs } from '../../components'
+import { getDogs, getTemperaments } from '../../redux/actions'
+import { Dogs, Searchbar } from '../../components'
 
 function Home() {
 
@@ -10,10 +10,12 @@ function Home() {
 
   useEffect(() => {
     dispatch(getDogs());
-  }, [])
+    dispatch(getTemperaments())
+  }, [dispatch])
 
   return (
     <div>
+      <Searchbar />
       <Dogs />
     </div>
   )

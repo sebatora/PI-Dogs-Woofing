@@ -1,9 +1,12 @@
-import { CLEAN_DETAIL, GET_DOGS, GET_DOG_BY_ID } from "./action-type";
+import { CLEAN_DETAIL, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, POST_DOG } from "./action-type";
 
 const initialState = {
   allDogs: [], 
   allDogsFilter: [], // ES LA COPIA PARA PODER ORDENAR O FILTRAR
-  dogById: {}
+  dogById: {},
+  allTemperaments: [],
+  allTemperamentsFilter: [],
+  newDogs: []
 };
 
 const rootReducer = (state = initialState, {type, payload}) => {
@@ -25,10 +28,30 @@ const rootReducer = (state = initialState, {type, payload}) => {
       };
     };
 
+    case GET_DOG_BY_NAME: {
+      return {
+        ...state,
+        allDogs: payload,
+      };
+    };
+
     case CLEAN_DETAIL: {
       return {
         ...state,
         dogById: {},
+      };
+    };
+
+    case GET_TEMPERAMENTS: {
+      return {
+        ...state,
+        allTemperaments: payload,
+      };
+    };
+
+    case POST_DOG: {
+      return {
+        ...state,
       };
     };
 

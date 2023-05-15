@@ -1,63 +1,148 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTemperaments, postDog } from '../../redux/actions'
 import validation from './validation';
 import style from "./Form.module.css"
+import { useNavigate } from 'react-router-dom';
 
-function Form ({ handleLogin }) {
+function Form () {
 
-  const [userData, setUserData] = useState({
-    username: "",
-    password: ""
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const allTemperaments = useSelector((state) => state.allTemperaments);
+
+
+  // Lo cargo nuevamente por si no se pasa por el home
+  useEffect(() => {
+    dispatch(getTemperaments())
+  }, [dispatch])
+
+  // Estado para data del formulario
+  const [formData, setFormData] = useState({
+    name: "",
+    height: "",
+    weight: "",
+    life_span: "",
+    temperaments: [],
+    image: ""
   });
 
+  // Estado para errores
   const [errors, setErrors] = useState({
-    username: "",
-    password: ""
+    name: "",
+    height: "",
+    weight: "",
+    life_span: "",
+    temperaments: [],
+    image: ""
   });
 
+  // control de cambios en los imput
   const handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
 
-    setUserData({...userData, [name]: value})
-    setErrors(validation({...userData, [name]: value}));
+    setFormData({...formData, [name]: value})
+    setErrors(validation({...formData, [name]: value})); // si no lo paso asi, la validacion esta un paso atrasada
+  }
+
+  // Maneja los temperamentos
+  const handleSelect = (event) => {
+    const newTemp = event.target.value;
+    if(formData.temperaments.includes(newTemp)) {
+      alert(`${newTemp} ya se encuentra en la lista`)
+      return;
+    }
+
+    setFormData({...formData, temperaments: [...formData.temperaments, newTemp]});
+    event.target.value= "";
   }
 
   const handleSubmit = (event) =>{
-    event.preventDefault()
-    handleLogin(userData);
+
+    event.preventDefault();
+    dispatch(postDog(formData))
+    alert("Perro añadido exitosamente")
+    console.log(formData)
+
+    setFormData({
+      name: "",
+      height: "",
+      weight: "",
+      life_span: "",
+      temperaments: [],
+      image: ""
+    });
+
+    navigate("/home")
+  }
+
+  const disableSubmit = () => {
+    if(!formData.name || !formData.height || !formData.weight || !formData.life_span || formData.temperaments.length === 0 || !formData.image) return false;
+    if(errors.name || errors.height || errors.weight || errors.life_span || errors.temperaments || errors.image) return false;
+    return true
   }
 
   return (
-    <div className={style.formBack}>
-      <div className={style.formContainer}>
 
-        <h2>Bienvenido</h2>
-        <p>Ingrese usuario y contraseña para acceder</p>
+      <div>
+        <h2>Completa el formulario para añadir tu perro</h2>
 
-        <img src={ rymloginform } alt="Rick and Morty" />
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="name">Nombre</label>
+            <input type="text" name="name" id="name" placeholder="Ingrese el nombre" autoComplete="off" value={formData.name} onChange={handleInputChange}/>
+            {errors.name && <p className={style.error}>{errors.name}</p>}
+          </div>
 
-        <form className={style.form} onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="height">Altura</label>
+            <input type="text" name="height" id="height" autoComplete="off" value={formData.height} onChange={handleInputChange}/>
+            {errors.height && <span className={style.error}>{errors.height}</span>}
+          </div>
 
-          <p>
-            <label htmlFor="email">EMAIL</label>
-            <input type="email" name="username" id="email" placeholder="Ingrese su mail" value={userData.username} onChange={handleInputChange}/>
-          </p>
-          {errors.username && <p className={style.error}>{errors.username}</p>}
+          <div>
+            <label htmlFor="weight">Peso</label>
+            <input type="text" name="weight" id="weight" autoComplete="off" value={formData.weight} onChange={handleInputChange}/>
+            {errors.weight && <span className={style.error}>{errors.weight}</span>}
+          </div>
 
-          <p>
-            <label htmlFor="password">PASSWORD</label>
-            <input type="password" name="password" id="password" placeholder="Ingrese su contraseña" value={userData.password} onChange={handleInputChange}/>
-          </p>
-          {errors.password && <span className={style.error}>{errors.password}</span>}
+          <div>
+            <label htmlFor="life_span">Años de Vida</label>
+            <input type="text" name="life_span" id="life_span" autoComplete="off" value={formData.life_span} onChange={handleInputChange}/>
+            {errors.life_span && <span className={style.error}>{errors.life_span}</span>}
+          </div>
 
-          <p>
-            <button className='btn' type="submit" disabled={!userData.username || !userData.password || errors.username || errors.password}>LOGIN</button>
-          </p>
+          <div>
+            <select onChange={handleSelect}>
+              <option value="">Temperamentos</option>
+              {allTemperaments?.map(temp => {
+                return (
+                  <option key={temp.id} name={temp.id} value={temp.name}>{temp.name}</option>
+                );
+              })}
+            </select>
+            <ul>
+              <li>
+                {formData.temperaments.map(temp => temp + " ")}
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <label htmlFor="image">Imagen</label>
+            <input type="text" name="image" id="image" value={formData.image} onChange={handleInputChange}/>
+            {/* <input type="file" accept='image/jpeg' name="image" id="image" value={formData.image} onChange={handleInputChange}/> */}
+            {errors.image && <span className={style.error}>{errors.image}</span>}
+          </div>
+
+          <div>
+            <button className='btn' type="submit" disabled={!disableSubmit()}>¡WOOF!</button>
+          </div>
         </form>
 
       </div>
-    </div>
   )
 }
 
