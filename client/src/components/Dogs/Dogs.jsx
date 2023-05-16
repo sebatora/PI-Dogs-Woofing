@@ -7,7 +7,6 @@ import style from "./Dogs.module.css"
 function Dogs() {
 
   const allDogs = useSelector((state) => state.allDogs);
-  const allTemperaments = useSelector((state) => state.allTemperaments);
 
   // Paginado
 
@@ -34,7 +33,7 @@ function Dogs() {
               />
             );
           }
-        )};
+        )}
       </div>
 
       <div className={style.dogsPagination}>

@@ -1,4 +1,4 @@
-import { CLEAN_DETAIL, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, POST_DOG } from "./action-type";
+import { CLEAN_DETAIL, FILTER_DOGS_BY_ORIGIN, FILTER_TEMPERAMENTS, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, POST_DOG } from "./action-type";
 import axios from "axios";
 const endpoint = "http://localhost:3001";
 
@@ -34,7 +34,6 @@ export const getDogByName = (name) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`${endpoint}/dogs?name=${name}`)
-      console.log(data);
       return dispatch({ type: GET_DOG_BY_NAME, payload: data });
     }
     catch (error) {
@@ -69,7 +68,17 @@ export const postDog = (newDog) => {
       return dispatch({ type: POST_DOG, payload: data });
     }
     catch (error) {
-      console.log(error.message);
+      return error.message;
     }
   };
+};
+
+// Filtra por temperamento
+export const filterByTemp = (temp) => {
+  return { type: FILTER_TEMPERAMENTS, payload: temp };
+};
+
+// Filtra por origen
+export const filterByOrigin = (origin) => {
+  return { type: FILTER_DOGS_BY_ORIGIN, payload: origin };
 };

@@ -20,8 +20,6 @@ function SearchBar() {
     setName("")
   }
 
-  // const randomId = Math.ceil(Math.random()*826)
-
   return (
     <div className={style.SearchContainer}>
       <input id={style.searchInput} type="search" onChange={handleInputChange} value={name} placeholder="Ingrese una raza" />

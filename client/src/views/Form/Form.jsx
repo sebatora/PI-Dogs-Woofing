@@ -10,7 +10,7 @@ function Form () {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const allTemperaments = useSelector((state) => state.allTemperaments);
+  const { allTemperaments } = useSelector(state => state)
 
 
   // Lo cargo nuevamente por si no se pasa por el home
@@ -64,7 +64,6 @@ function Form () {
     event.preventDefault();
     dispatch(postDog(formData))
     alert("Perro añadido exitosamente")
-    console.log(formData)
 
     setFormData({
       name: "",

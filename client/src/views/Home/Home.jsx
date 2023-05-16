@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getDogs, getTemperaments } from '../../redux/actions'
-import { Dogs, Searchbar } from '../../components'
+import { Dogs, Filters, Searchbar } from '../../components'
 
 function Home() {
 
@@ -16,6 +16,7 @@ function Home() {
   return (
     <div>
       <Searchbar />
+      <Filters />
       <Dogs />
     </div>
   )

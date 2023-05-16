@@ -7,9 +7,7 @@ import { useEffect } from "react";
 function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { image, name, height, weight, temperaments, life_span } = useSelector(
-    (state) => state.dogById
-  );
+  const { image, name, height, weight, temperaments, life_span } = useSelector(state => state.dogById);
 
   useEffect(() => {
     dispatch(getDogById(id));
@@ -27,10 +25,14 @@ function Detail() {
       <h3>{height}</h3>
       <h2>WEIGHT</h2>
       <h3>{weight}</h3>
-      <h2>TEMPERAMENTS</h2>
-      <h3>{temperaments?.join(", ")}</h3>
       <h2>LIFE SPAN</h2>
       <h3>{life_span}</h3>
+      <h2>TEMPERAMENTS</h2>
+      {
+          temperaments?.map(temp => {
+            return <h3 key={temp}>{temp}</h3>
+          })
+      }
     </div>
   );
 }
