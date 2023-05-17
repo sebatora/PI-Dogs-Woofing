@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Dog, Pagination } from '../index';
+import { Dog, Filters, Pagination } from '../index';
 import style from "./Dogs.module.css"
 
 
 function Dogs() {
 
-  const allDogs = useSelector((state) => state.allDogs);
+  const {allDogs} = useSelector((state) => state);
 
   // Paginado
 
@@ -19,7 +19,11 @@ function Dogs() {
 
   return (
     <div>
-      <div>
+      <Filters
+        setCurrentPage={setCurrentPage}
+      />
+
+      <div className={style.dogsContainer}>
         {currentDogs.map(
           ({ id, image, name, temperaments, weight }) => {
             return (

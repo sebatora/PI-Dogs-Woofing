@@ -1,4 +1,5 @@
-import { CLEAN_DETAIL, FILTER_DOGS_BY_ORIGIN, FILTER_TEMPERAMENTS, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, POST_DOG } from "./action-type";
+import { CLEAN_DETAIL, FILTER_DOGS_BY_ORIGIN, FILTER_TEMPERAMENTS, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, ORDER_ALPHABETIC, ORDER_WEIGHT, POST_DOG } from "./action-type";
+import { orderWeight } from "./actions";
 
 const initialState = {
   allDogs: [], 
@@ -73,12 +74,49 @@ const rootReducer = (state = initialState, {type, payload}) => {
       const filterByOrigin = payload === "API"
       ? allDogsOrigin.filter(dog => !dog.createInDb)
       : allDogsOrigin.filter(dog => dog.createInDb)
-
       return {
         ...state,
         allDogs: payload === "All"
         ? allDogsOrigin
         : filterByOrigin,
+      };
+    };
+
+    case ORDER_ALPHABETIC: {
+      const allDogsName = state.allDogsFilter;
+      const orderAlphabetic = payload === true
+      ? allDogsName.sort((a,b) => {
+        if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+        if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+        return 0;
+        })
+      : allDogsName.sort((a,b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+        if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+        return 0;
+      })
+      return {
+        ...state,
+        allDogs: orderAlphabetic
+      };
+    };
+
+    case ORDER_WEIGHT: {
+      const allDogsWeight = state.allDogsFilter;
+      const orderWeight = payload === true
+      ? allDogsWeight.sort((a,b) => {
+        if (parseInt(a.weight) > parseInt(b.weight)) return 1;
+        if (parseInt(a.weight) < parseInt(b.weight)) return -1;
+        return 0;
+        })
+      : allDogsWeight.sort((a,b) => {
+        if (parseInt(a.weight) < parseInt(b.weight)) return 1;
+        if (parseInt(a.weight) > parseInt(b.weight)) return -1;
+        return 0;
+      })
+      return {
+        ...state,
+        allDogs: orderWeight
       };
     };
 

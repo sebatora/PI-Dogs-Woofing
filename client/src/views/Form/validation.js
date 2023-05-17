@@ -1,8 +1,8 @@
 const validation = (formData) => {
 
-  // Name
   let errors = {};
 
+  // Name
   if(!formData.name) errors.name = "Por favor completa este campo";
 
   if (formData.name.length > 25) errors.name = "Debe tener menos de 25 caracteres";

@@ -1,4 +1,4 @@
-import { CLEAN_DETAIL, FILTER_DOGS_BY_ORIGIN, FILTER_TEMPERAMENTS, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, POST_DOG } from "./action-type";
+import { CLEAN_DETAIL, FILTER_DOGS_BY_ORIGIN, FILTER_TEMPERAMENTS, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, ORDER_ALPHABETIC, ORDER_WEIGHT, POST_DOG } from "./action-type";
 import axios from "axios";
 const endpoint = "http://localhost:3001";
 
@@ -43,7 +43,7 @@ export const getDogByName = (name) => {
 };
 
 // Limpia el estado
-export const cleanDetail = (id) => {  
+export const cleanDetail = () => {  
   return {type: CLEAN_DETAIL}
 };
 
@@ -81,4 +81,14 @@ export const filterByTemp = (temp) => {
 // Filtra por origen
 export const filterByOrigin = (origin) => {
   return { type: FILTER_DOGS_BY_ORIGIN, payload: origin };
+};
+
+// Ordena alfabeticamente
+export const orderAlphabetic = (order) => {
+  return { type: ORDER_ALPHABETIC, payload: order };
+};
+
+// Ordena por peso
+export const orderWeight = (order) => {
+  return { type: ORDER_WEIGHT, payload: order };
 };

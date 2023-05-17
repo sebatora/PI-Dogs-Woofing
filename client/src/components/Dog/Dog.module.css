@@ -1,0 +1,44 @@
+.dogContainer{
+  background-color: white;
+  height: fit-content;
+  width: 400px;
+  height: 500px;
+  perspective: 1000px;
+  border-radius: 10px;
+  margin: 1%;
+  text-align: center;
+  align-items: center;
+  box-shadow: 10px 10px 25px 0px rgba(0,0,0,0.75);
+}
+
+.dogContainer img{
+  width: 400px;
+  height: 250px;
+  border-radius: 0px;
+}
+
+.dogContainer .dogTemperaments{
+  width: fit-content;
+  display: inline;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dogTemperaments div{
+  display: inline-block;
+  width: fit-content;
+  margin: 1%;
+}
+
+.dogTemperaments {
+  white-space: nowrap;
+  width: 20%;
+}
+
+.dogLink{
+  text-decoration: none;
+}
+
+.dogContainer h2, h3, div{
+color: black;
+}

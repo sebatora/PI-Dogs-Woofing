@@ -1,0 +1,16 @@
+.FilterOrder div{
+  border: 1px solid black;
+  cursor: pointer;
+  width: fit-content;
+  padding: 1%;
+  margin: 1%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.FilterOrder img {
+  width: 40px;
+}

@@ -1,8 +1,10 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getDogs, getTemperaments } from '../../redux/actions'
-import { Dogs, Filters, Searchbar } from '../../components'
+import { Dogs, Searchbar } from '../../components'
+import Loading from '../Loading/Loading'
+
 
 function Home() {
 
@@ -13,11 +15,16 @@ function Home() {
     dispatch(getTemperaments())
   }, [dispatch])
 
+  const {allDogs} = useSelector((state) => state);
+
   return (
     <div>
       <Searchbar />
-      <Filters />
-      <Dogs />
+
+      {allDogs.length !== 0 ? (
+        <Dogs /> )
+        : ( <Loading /> )}
+
     </div>
   )
 }

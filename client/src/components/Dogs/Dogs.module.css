@@ -1,0 +1,9 @@
+.dogsContainer {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dogsPagination ul{
+  list-style: none;
+}

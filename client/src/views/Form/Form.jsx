@@ -48,12 +48,24 @@ function Form () {
   }
 
   // Maneja los temperamentos
-  const handleSelect = (event) => {
+  const handleTemperamentSelect = (event) => {
     const newTemp = event.target.value;
     if(formData.temperaments.includes(newTemp)) {
       alert(`${newTemp} ya se encuentra en la lista`)
       return;
     }
+
+    const handleDelete = (temperament) => {
+      setInput({
+        ...formData,
+        temperaments: formData.temperaments.filter(temp => temp !== temperament)
+      });
+    }
+
+  const handleTemperamentDelete = (event) => {
+    setFormData({...formData, temperaments: formData.temperaments.filter(temperament => temperament !== temp)})
+    return;
+  }
 
     setFormData({...formData, temperaments: [...formData.temperaments, newTemp]});
     event.target.value= "";
@@ -114,7 +126,7 @@ function Form () {
           </div>
 
           <div>
-            <select onChange={handleSelect}>
+            <select onChange={handleTemperamentSelect}>
               <option value="">Temperamentos</option>
               {allTemperaments?.map(temp => {
                 return (
@@ -122,11 +134,6 @@ function Form () {
                 );
               })}
             </select>
-            <ul>
-              <li>
-                {formData.temperaments.map(temp => temp + " ")}
-              </li>
-            </ul>
           </div>
 
           <div>
@@ -140,6 +147,13 @@ function Form () {
             <button className='btn' type="submit" disabled={!disableSubmit()}>¡WOOF!</button>
           </div>
         </form>
+
+        {formData.temperaments.map(temp =>
+          <div>
+          <p>{temp}</p>
+          <button onClick={() => handleTemperamentDelete(temp)}>X</button>
+        </div>
+        )}
 
       </div>
   )

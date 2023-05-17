@@ -12,11 +12,15 @@ function Navbar() {
         </Link>
 
         <Link to="/create" className={style.navFavourites}>
-          <button className="btn">Añade tu perro</button>
+          <button className="btn">Create your dog</button>
         </Link>
 
         <Link to="/about" className={style.navAbout}>
           <button className="btn">About</button>
+        </Link>
+
+        <Link to="/exit" className={style.navExit}>
+          <button className="btn">Exit</button>
         </Link>
     </div>
   </nav>

@@ -2,9 +2,8 @@
 import './App.css'
 
 //COMPONENTS
-import { Landing, Home, Detail, Form, About,  } from "./views"
+import { Landing, Home, Detail, Form, About, Exiting } from "./views"
 import { Navbar } from './components';
-
 
 //HOOKS
 import { Route, Routes, useLocation } from "react-router-dom";
@@ -15,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      {pathname !== "/" && <Navbar />}
+      {(pathname !== "/" && pathname !== "/exit") && <Navbar />}
 
       <Routes>
         <Route exact path="/" element={<Landing />} />
@@ -27,6 +26,8 @@ function App() {
         <Route path="/create" element={<Form />} />
 
         <Route path="/about" element={<About />} />
+
+        <Route path="/exit" element={<Exiting />} />
 
       </Routes>
     </div>

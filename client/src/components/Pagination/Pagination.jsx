@@ -1,5 +1,7 @@
 import React from "react";
 import style from "./Pagination.module.css"
+import prev from "../../assets/prev.png"
+import next from "../../assets/next.png"
 
 function Pagination({ totalDogs, dogsPerPage, currentPage, setCurrentPage }) {
 
@@ -28,12 +30,12 @@ function Pagination({ totalDogs, dogsPerPage, currentPage, setCurrentPage }) {
 
 
   return (
-    <nav className={style.pagination}>
+    <nav className={style.paginationContainer}>
       <ul className={style.ul}>
 
         <li className={style.li}>
           <button className={style.paginationBtnPrev} onClick={prevHandler}>
-            Prev
+            <img src={prev} alt="Prev"/>
           </button>
         </li>
 
@@ -47,7 +49,7 @@ function Pagination({ totalDogs, dogsPerPage, currentPage, setCurrentPage }) {
 
         <li className={style.li}>
           <button className={style.paginationBtnNext} onClick={nextHandler}>
-            Next
+            <img src={next} alt="Next"/>
           </button>
         </li>
 
