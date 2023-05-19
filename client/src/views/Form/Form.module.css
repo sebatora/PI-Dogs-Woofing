@@ -1,60 +1,66 @@
-.formBack{
-  background-image: url( "../../assets/rymloginback.jpg" );
-  background-repeat:repeat;
-  background-position-y: 100%;
-  background-size: cover;
-  background-attachment: fixed;
-  height: 100vh;
-  padding-top: 3%;
-}
-
-
 .formContainer{
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 25vw;
+  display: block;
+  margin: 1rem auto;
+  width: 40vw;
   padding: 1%;
   border-radius: 15px;
-  border: 2px solid white;
+  border: 2px solid var(--color-3);
   text-align: center;
   font-size: 1rem;
   align-items: center;
   justify-content: center;
-  background-image: var(--bg-image)
+  background-color: var(--color-2);
+  color: var(--color-1);
+}
+
+@media (max-width: 450px) {
+  .formContainer{
+    width: 75vw;
+  }
 }
 
 .formContainer h2{
-  font-size: x-large;
+  font-size: 1.2rem;
   font-weight: bolder;
+  text-transform: uppercase;
+  margin: 0;
 }
 
-.formContainer p{
-  font-size: small;
+.formData label{
   font-weight: bold;
 }
 
-.formContainer img{
-  width: 50%;
-  object-fit: cover;
-}
-
-.form label{
-  align-items: center;
-  font-weight: bold;
-  margin: 0 auto;
-}
-
-.form input{
+.formData , .formData span, .formData input{
   display: block;
-  align-items: center;
-  box-sizing: border-box;
-  margin: 5px auto 0 auto;
-  border-radius: 5px;
 }
 
-.form input:focus{
-  outline: 2px solid #26d0cd87;
+.formData {
+  width: 60%;
+  height: auto;
+  margin: 2% auto;
+}
+
+.formData input, textarea{
+  width: 60%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  margin: auto;
+}
+
+.formData input:focus{
+  outline: 2px solid var(--color-5)
+}
+
+.formData ::placeholder{
+  color: #999;
+  text-align: center;
+  font-style: italic;
+}
+
+.formData span{
+  margin: 1%;
 }
 
 .error{
@@ -63,4 +69,3 @@
   font-weight: bold;
   text-align: center;
 }
-

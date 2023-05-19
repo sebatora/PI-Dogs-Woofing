@@ -1,5 +1,5 @@
+import { parseWeight } from "../utils/parseWeight";
 import { CLEAN_DETAIL, FILTER_DOGS_BY_ORIGIN, FILTER_TEMPERAMENTS, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, ORDER_ALPHABETIC, ORDER_WEIGHT, POST_DOG } from "./action-type";
-import { orderWeight } from "./actions";
 
 const initialState = {
   allDogs: [], 
@@ -15,6 +15,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
   switch(type){
 
     case GET_DOGS: {
+
       return {
         ...state,
         allDogs: payload,
@@ -54,6 +55,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
     case POST_DOG: {
       return {
         ...state,
+        newDogs: [...state.newDogs, payload]
       };
     };
 
@@ -119,6 +121,36 @@ const rootReducer = (state = initialState, {type, payload}) => {
         allDogs: orderWeight
       };
     };
+
+    // case ORDER_WEIGHT: {
+    //   const allDogsWeight = state.allDogsFilter;
+    //   const orderWeight = payload === true
+    //     ? allDogsWeight.sort((a, b) => {
+    //         const weightA = parseWeight(a.weight);
+    //         const weightB = parseWeight(b.weight);
+    
+    //         if (weightA.number === weightB.number) {
+    //           return weightA.subNumber - weightB.subNumber;
+    //         }
+    
+    //         return weightA.number - weightB.number;
+    //       })
+    //     : allDogsWeight.sort((a, b) => {
+    //         const weightA = parseWeight(a.weight);
+    //         const weightB = parseWeight(b.weight);
+    
+    //         if (weightA.number === weightB.number) {
+    //           return weightB.subNumber - weightA.subNumber;
+    //         }
+    
+    //         return weightB.number - weightA.number;
+    //       });
+    
+    //   return {
+    //     ...state,
+    //     allDogs: orderWeight
+    //   };
+    // };
 
     default:
       return { ...state }

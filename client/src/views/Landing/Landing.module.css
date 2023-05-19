@@ -15,7 +15,7 @@
 }
 
 @media (max-width: 450px){
-  .landingBack h1, .landingBack h3, .landingLink{
+  .landingBack h1, .landingBack h3, .landingLink {
     font-size: small;
   }
 }

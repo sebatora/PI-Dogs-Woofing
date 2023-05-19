@@ -81,12 +81,12 @@ function Filters({setCurrentPage}) {
 
         {/* ORDEN ALFABETICO */}
         <div className={style.FilterOrderAlphabetic} onClick={handleOrderAlphabetic}>
-          <img src={ordericon}/><aside>Alfabeticamente</aside>
+          <img src={ordericon}/><aside>{orderAlphabeticState ? "A-Z" : "Z-A"}</aside>
         </div>
 
         {/* ORDEN POR PESO */}
         <div className={style.FilterOrderWeight} onClick={handleOrderWeight}>
-          <img src={ordericon}/><aside>Peso</aside>
+          <img src={ordericon}/><aside>{orderWeightState ? "Weight +" : "Weight -"}</aside>
         </div>
 
       </div>

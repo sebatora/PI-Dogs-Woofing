@@ -18,14 +18,13 @@ function Dogs() {
   const currentDogs = allDogs.slice(indexFirst, indexLast);
 
   return (
-    <div>
-      <Searchbar />
+    <div className={style.dogsContainer}>
 
       <Filters
         setCurrentPage={setCurrentPage}
       />
 
-      <div className={style.dogsContainer}>
+      <div className={style.dogsCard}>
         {currentDogs.map(
           ({ id, image, name, temperaments, weight }) => {
             return (

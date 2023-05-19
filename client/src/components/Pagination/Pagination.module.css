@@ -16,9 +16,28 @@
   cursor: pointer;
 }
 
-.paginationContainer button{
-  border-radius: 5px;
-  margin: 0 1%;
+.paginationBtn ,.paginationBtnPrev ,.paginationBtnNext{
+  background-color: var(--color-2);
+  border: 1px solid #ccc;
+  color: var(--color-1);
+  padding: 0.5rem 0.5rem;
+  border-radius: 0;
+  text-decoration: none;
+  display: inline-block;
   cursor: pointer;
-  border: none;
+}
+
+.paginationBtn:hover ,.paginationBtnPrev:hover ,.paginationBtnNext:hover {
+  background-color: var(--color-5);
+}
+
+.paginationBtnActive{
+  background-color: var(--color-3);
+  border: 1px solid #ccc;
+  color: var(--color-1);
+  padding: 0.5rem 0.5rem;
+  border-radius: 0;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
 }
