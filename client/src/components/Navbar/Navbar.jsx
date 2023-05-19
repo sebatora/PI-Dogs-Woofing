@@ -1,29 +1,39 @@
 import React from "react";
 import style from "./Navbar.module.css"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import dogLogo from "../../assets/DogLogo.png"
 
 function Navbar() {
+
+  const { pathname } = useLocation();
+
   return (
-    <nav className={style.NavContainer}>
+    <nav className={style.navContainer}>
 
-    <div className={style.navLink}>
-        <Link to="/home" className={style.navHome}>
-          <button className="btn">Home</button>
+      <div className={style.navLogo}>
+        <Link to="/home">
+          <img src={dogLogo} alt="Logo" />
         </Link>
+      </div>
 
-        <Link to="/create" className={style.navFavourites}>
-          <button className="btn">Create your dog</button>
-        </Link>
+      <div className={style.navLinkContainer}>
+          <Link to="/home" className={pathname === "/home" ? style.navActive : style.navLink}>
+            Home
+          </Link>
 
-        <Link to="/about" className={style.navAbout}>
-          <button className="btn">About</button>
-        </Link>
+          <Link to="/create" className={pathname === "/create" ? style.navActive : style.navLink}>
+            Create your dog
+          </Link>
 
-        <Link to="/exit" className={style.navExit}>
-          <button className="btn">Exit</button>
-        </Link>
-    </div>
-  </nav>
+          <Link to="/about" className={pathname === "/about" ? style.navActive : style.navLink}>
+            About
+          </Link>
+
+          <Link to="/exit" className={pathname === "/exit" ? style.navActive : style.navLink}>
+            Exit
+          </Link>
+      </div>
+    </nav>
   )
 }
 

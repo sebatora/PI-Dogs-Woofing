@@ -1,0 +1,22 @@
+.detailContainer{
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 80%;
+  padding: 2% 0;
+  margin: auto
+}
+
+.detailimage{
+  width: 100%;
+}
+
+.detailImage img{
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.detailData{
+  display: flex;
+  margin: 1%;
+}

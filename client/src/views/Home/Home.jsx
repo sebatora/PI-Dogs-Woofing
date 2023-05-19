@@ -19,12 +19,9 @@ function Home() {
 
   return (
     <div>
-      <Searchbar />
-
       {allDogs.length !== 0 ? (
         <Dogs /> )
         : ( <Loading /> )}
-
     </div>
   )
 }

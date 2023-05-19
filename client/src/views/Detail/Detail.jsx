@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { cleanDetail, getDogById } from "../../redux/actions";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import Loading from "../Loading/Loading";
+import { Loading } from "../index";
+import style from "./Detail.module.css"
 
 function Detail() {
   const dispatch = useDispatch();
@@ -20,22 +21,35 @@ function Detail() {
   return (
     <div>
       {name ? (
-        <div>
-          <img src={image} alt={name} />
-          <h2>NAME</h2>
-          <h3>{name}</h3>
-          <h2>HEIGHT</h2>
-          <h3>{height}</h3>
-          <h2>WEIGHT</h2>
-          <h3>{weight}</h3>
-          <h2>LIFE SPAN</h2>
-          <h3>{life_span}</h3>
-          <h2>TEMPERAMENTS</h2>
-          {
-              temperaments?.map(temp => {
-                return <h3 key={temp}>{temp}</h3>
-              })
-          }
+        <div className={style.detailContainer}>
+
+          <div className={style.detailImage}>
+            <img src={image} alt={name} />
+          </div>
+
+          <div className={style.detailData}>
+            <div className={style.detailDataText}>
+              <h2>NAME</h2>
+              <h3>{name}</h3>
+              <h2>HEIGHT</h2>
+              <h3>{height}</h3>
+              <h2>WEIGHT</h2>
+              <h3>{weight}</h3>
+              <h2>LIFE SPAN</h2>
+              <h3>{life_span}</h3>
+            </div>
+
+            <div className={style.detailDataTemp}>
+              <h2>TEMPERAMENTS</h2>
+              {
+                  temperaments?.map(temp => {
+                    return <h3 key={temp}>{temp}</h3>
+                  })
+              }
+            </div>
+
+          </div>
+
         </div> )
       : ( <Loading /> )}
     </div>
