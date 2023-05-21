@@ -47,6 +47,7 @@
   border-radius: 10px;
   font-size: 16px;
   margin: auto;
+  text-align: center;
 }
 
 .formData input:focus{
@@ -68,4 +69,15 @@
   font-size: 0.85em;
   font-weight: bold;
   text-align: center;
+}
+
+.formDataTemp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.formTemperaments{
+  width: fit-content;
+  margin: 2%;
 }

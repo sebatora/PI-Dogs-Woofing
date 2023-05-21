@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Navbar.module.css"
 import { Link, useLocation } from "react-router-dom";
 import dogLogo from "../../assets/DogLogo.png"
-import { Searchbar } from "../index";
 
 function Navbar() {
 
   const { pathname } = useLocation();
+
+  const [toggleMenu, setToggleMenu] = useState(false)
+
+  const handleToggle = () => {
+    toggleMenu ? setToggleMenu(false) : setToggleMenu(true)
+  }
 
   return (
     <nav className={style.navContainer}>
@@ -17,7 +22,8 @@ function Navbar() {
         </Link>
       </div>
 
-      <div className={style.navLinkContainer}>
+        <p onClick={handleToggle} id={style.toggleP}>☰</p>
+      <div className={(toggleMenu ? style.navToggleMenu : style.navLinkContainer)}>
         <Link to="/home" className={pathname === "/home" ? style.navActive : style.navLink}>
           Home
         </Link>
@@ -35,10 +41,6 @@ function Navbar() {
         </Link>
       </div>
 
-      <div className={style.navSearchbar}>
-        { pathname ==="/home" && <Searchbar /> }
-        
-      </div>
     </nav>
   )
 }

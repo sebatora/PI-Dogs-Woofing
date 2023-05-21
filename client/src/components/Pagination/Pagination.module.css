@@ -3,10 +3,12 @@
 }
 
 .paginationContainer{
-  width: 100%;
-  justify-content: space-evenly;
+  width: 90%;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   height: 20px;
+  margin: 0 auto;
 }
 
 .paginationContainer li{
@@ -18,13 +20,15 @@
 
 .paginationBtn ,.paginationBtnPrev ,.paginationBtnNext{
   background-color: var(--color-2);
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-2);
   color: var(--color-1);
-  padding: 0.5rem 0.5rem;
   border-radius: 0;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin: 5px auto;
 }
 
 .paginationBtn:hover ,.paginationBtnPrev:hover ,.paginationBtnNext:hover {
@@ -33,11 +37,13 @@
 
 .paginationBtnActive{
   background-color: var(--color-3);
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-4);
   color: var(--color-1);
-  padding: 0.5rem 0.5rem;
   border-radius: 0;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin: 5px auto;
 }

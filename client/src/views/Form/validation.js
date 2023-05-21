@@ -1,6 +1,9 @@
 const validation = (formData, allDogs) => {
 
   let errors = {};
+  let regexH = /^\d{1,2} ?- ?\d{1,2}( cm)?$/
+  let regexW = /^\d{1,2} ?- ?\d{1,2}( kg)?$/
+  let regexLS = /^\d{1,2} ?- ?\d{1,2}( years)?$/
 
   // Name
   if(!formData.name) errors.name = "This field is required";
@@ -12,17 +15,17 @@ const validation = (formData, allDogs) => {
   // Height
 
   if(!formData.height) errors.height = "This field is required";
-  if(!/^\d{1,2}(\.\d)?\s*(y|cm)?\s*-\s*\d{1,2}(\.\d)?\s*(y|cm)?$/.test(formData.height)) errors.height = "The format must be min - max cm";
+  if(!regexH.test(formData.height)) errors.height = "The format must be min - max cm";
 
     // Weight
 
   if(!formData.weight) errors.weight = "This field is required";
-  if(!/^\d{1,2}(\.\d)?\s*(y|kg)?\s*-\s*\d{1,2}(\.\d)?\s*(y|kg)?$/.test(formData.weight)) errors.weight = "The format must be min - max kg";
+  if(!regexW.test(formData.weight)) errors.weight = "The format must be min - max kg";
 
   // Life Span
 
   if(!formData.life_span) errors.life_span = "This field is required";
-  if(!/^\d{1,2}(\.\d)?\s*(y|años)?\s*-\s*\d{1,2}(\.\d)?\s*(y|years)?$/.test(formData.life_span)) errors.life_span = "The format must be min - max years";
+  if(!regexLS.test(formData.life_span)) errors.life_span = "The format must be min - max years";
 
   return errors;
 

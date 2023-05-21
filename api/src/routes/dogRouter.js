@@ -10,4 +10,7 @@ dogRouter.get("/:id", getDogHandler);
 // POST nuevo perro
 dogRouter.post("/", postDogHandler);
 
+// DELETE por nombre
+// dogRouter.delete("/", deleteDogsHandler);
+
 module.exports = dogRouter;

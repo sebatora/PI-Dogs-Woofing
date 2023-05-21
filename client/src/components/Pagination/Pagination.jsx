@@ -41,7 +41,7 @@ function Pagination({ totalDogs, dogsPerPage, currentPage, setCurrentPage }) {
 
         {pageNumbers?.map((page) => (
           <li className={style.li} key={page}>
-            <button className={`${page === currentPage ? style.paginationBtnActive : style.paginationBtn}`} onClick={() => pagination(page)}>
+            <button className={(page === currentPage ? style.paginationBtnActive : style.paginationBtn)} onClick={() => pagination(page)}>
               {page}
             </button>
           </li>

@@ -3,7 +3,6 @@ import { useState } from "react";
 import style from "./SearchBar.module.css"
 import { useDispatch } from 'react-redux';
 import { getDogByName } from '../../redux/actions';
-import search from "../../assets/search.png"
 
 function Searchbar() {
 
@@ -14,19 +13,12 @@ function Searchbar() {
   const handleInputChange = (event) => {
       let { value } = event.target;
       setName(value);
-  }
-
-  const onSearch = () => {
-    dispatch(getDogByName(name))
-    setName("")
+      dispatch(getDogByName(value))
   }
 
   return (
-    <div className={style.SearchContainer}>
-      <input id={style.searchInput} type="text" onChange={handleInputChange} value={name} placeholder="Enter a breed" />
-      <button onClick={() => onSearch()}>
-        <img src={search} alt="Search" />
-      </button>
+    <div className={style.searchContainer}>
+      <input type="text" onChange={handleInputChange} value={name} placeholder="Enter a breed" />
   </div>
   );
 }

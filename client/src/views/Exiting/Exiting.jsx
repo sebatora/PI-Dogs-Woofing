@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import style from "./Exiting.module.css"
 import github from "../../assets/github.png"
 import linkedin from "../../assets/linkedin.png"

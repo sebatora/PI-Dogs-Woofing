@@ -32,7 +32,7 @@ width: 70px;
 
 .navLink{
   color: var(--color-1);
-  margin: 5px;
+  margin: auto 5px;
   position: relative;
 }
 
@@ -58,22 +58,55 @@ width: 70px;
 .navActive{
   color: var(--color-5);
   box-shadow: inset;
+  margin: auto 5px;
 }
 
-.navSearchbar{
-  position: relative;
-  left: 10%;
+.navToggle, #toggleP{
+  display: none;
 }
 
-.searchInput {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
+.navToggleMenu{
+  display: none;
 }
 
-.searchInput:focus {
-  outline: none;
-  border-color: var(--color-2);
-  box-shadow: 50 50 0 2px rgba(0, 123, 255, 0.25);
+@media (max-width: 545px){
+  .navContainer{
+    justify-content: center;
+  }
+
+  .navLinkContainer {
+    display: none;
+  }
+
+  .navToggle, #toggleP{
+    display: flex;
+  }
+
+  #toggleP{
+    margin: 0 10%;
+  }
+
+  .navToggleMenu {
+    position: fixed;
+    right: 2%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-2);
+    width: fit-content;
+    border: 1px solid var(--color-1);
+    margin-top: 50px;
+  }
+
+  .navToggleMenu a{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 465px){
+  .navToggleMenu {
+    top: 0.5%;
+  }
 }

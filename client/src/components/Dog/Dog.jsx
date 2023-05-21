@@ -13,7 +13,7 @@ function Dog({ id, image, name, temperaments, weight }) {
           <img src={image} alt={name} />
 
         <div className={style.dogDetail}>
-          <h4>Peso | {weight}</h4>
+          <h4>Peso | {weight} kg</h4>
           <h4>Temperamentos</h4>
           <div className={style.dogTemperaments}>
             {

@@ -18,29 +18,32 @@ function Detail() {
 
   }, [id]);
 
+  const adaptStringEnd = (data) => {
+    return data.replace(/\s+[A-Za-z]+$/, '');
+  }
+
   return (
     <div>
       {name ? (
         <div className={style.detailContainer}>
 
+              <h2>{name}</h2>
           <div className={style.detailImage}>
             <img src={image} alt={name} />
           </div>
 
           <div className={style.detailData}>
             <div className={style.detailDataText}>
-              <h2>NAME</h2>
-              <h3>{name}</h3>
-              <h2>HEIGHT</h2>
-              <h3>{height}</h3>
-              <h2>WEIGHT</h2>
-              <h3>{weight}</h3>
-              <h2>LIFE SPAN</h2>
-              <h3>{life_span}</h3>
+              <h2>Height</h2>
+              <h3>{adaptStringEnd(height)} cm</h3>
+              <h2>Weight</h2>
+              <h3>{adaptStringEnd(weight)} kg</h3>
+              <h2>Life Span</h2>
+              <h3>{adaptStringEnd(life_span)} years</h3>
             </div>
 
             <div className={style.detailDataTemp}>
-              <h2>TEMPERAMENTS</h2>
+              <h2>Temperaments</h2>
               {
                   temperaments?.map(temp => {
                     return <h3 key={temp}>{temp}</h3>

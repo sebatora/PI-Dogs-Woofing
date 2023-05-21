@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Filters.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByOrigin, filterByTemp, orderAlphabetic } from "../../redux/actions";
-import ordericon from "../../assets/ordericon.png"
+import { Searchbar } from "../index";
 
 
 function Filters({setCurrentPage}) {
-
+  
   const dispatch = useDispatch();
-  const { allTemperaments } = useSelector(state => state)
+  
+  const [filteredDogs, setFilteredDogs] = useState([]);
+  const { allDogs, allTemperaments, dogsByTemp, dogsByOrigin } = useSelector(state => state)
+
+  useEffect(() => {
+    const filteredDogs = allDogs.filter((dog) => {
+      const originMatch = dogsByOrigin === '' || dog.origen === dogsByOrigin;
+      const tempMatch = dogsByTemp === '' || dog.edad === dogsByTemp;
+
+      return originMatch && tempMatch;
+    });
+
+    setFilteredDogs(filteredDogs);
+  }, [allDogs, dogsByOrigin, dogsByTemp]);
+
 
   const handleFilterByTemp = (event) => {
     const temp = event.target.value;
@@ -43,12 +57,16 @@ function Filters({setCurrentPage}) {
   };
 
   return (
-    <div className={style.FilterContainer}>
+    <nav className={style.filterContainer}>
+
+      <div className={style.filterSearch}>
+        <Searchbar />
+      </div>
 
       {/* FILTRO POR TEMPERAMENTO */}
-      <div className={style.FilterTemperaments}>
+      <div className={style.filterTemperaments}>
         <select onChange={handleFilterByTemp}>
-          <option value="All">Temperamentos</option>
+          <option value="All">Temperaments</option>
           {allTemperaments?.map((temp) => {
             return (
               <option key={temp.id} name={temp.id} value={temp.name}>
@@ -60,37 +78,33 @@ function Filters({setCurrentPage}) {
       </div>
 
       {/* FILTRO POR ORIGEN */}
-      <div className={style.FilterCreated}>
-        <form>
-          <fieldset>
-            <legend>Filtrar por origen</legend>
-            <input type="radio" id="All" name="filterOrigin" value="All" onClick={event => handleFilterByOrigin(event)}/>
-            <label htmlFor="All">All</label>
+      <div className={style.filterCreated}>
+        <legend>Source</legend>
+        <input type="radio" name="filterOrigin" value="All" onClick={event => handleFilterByOrigin(event)}/>
+        <label htmlFor="All">All</label>
 
-            <input type="radio" id="API" name="filterOrigin" value="API" onClick={handleFilterByOrigin}/>
-            <label htmlFor="API">API</label>
+        <input type="radio" name="filterOrigin" value="API" onClick={handleFilterByOrigin}/>
+        <label htmlFor="API">API</label>
 
-            <input type="radio" id="Creados" name="filterOrigin" value="Creados" onClick={handleFilterByOrigin}/>
-            <label htmlFor="Creados">Creados</label>
-          </fieldset>
-        </form>
+        <input type="radio" name="filterOrigin" value="Created" onClick={handleFilterByOrigin}/>
+        <label htmlFor="Creados">Yours</label>
       </div>
 
       {/* ORDEN */}
-      <div className={style.FilterOrder}>
+      <div className={style.filterOrder}>
 
         {/* ORDEN ALFABETICO */}
-        <div className={style.FilterOrderAlphabetic} onClick={handleOrderAlphabetic}>
-          <img src={ordericon}/><aside>{orderAlphabeticState ? "A-Z" : "Z-A"}</aside>
+        <div className={style.filterOrderAlphabetic} onClick={handleOrderAlphabetic}>
+          {orderAlphabeticState ? "A-Z" : "Z-A"}
         </div>
 
         {/* ORDEN POR PESO */}
-        <div className={style.FilterOrderWeight} onClick={handleOrderWeight}>
-          <img src={ordericon}/><aside>{orderWeightState ? "Weight +" : "Weight -"}</aside>
+        <div className={style.filterOrderWeight} onClick={handleOrderWeight}>
+          {orderWeightState ? "Weight +" : "Weight -"}
         </div>
 
       </div>
-    </div>
+    </nav>
   );
 }
 

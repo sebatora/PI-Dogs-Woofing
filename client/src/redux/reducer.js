@@ -5,9 +5,9 @@ const initialState = {
   allDogs: [], 
   allDogsFilter: [], // ES LA COPIA PARA PODER ORDENAR O FILTRAR
   dogById: {},
+  dogsByTemp: [],
+  dogsByOrigin: [],
   allTemperaments: [],
-  allTemperamentsFilter: [],
-  newDogs: []
 };
 
 const rootReducer = (state = initialState, {type, payload}) => {
@@ -23,17 +23,17 @@ const rootReducer = (state = initialState, {type, payload}) => {
       };
     };
 
-    case GET_DOG_BY_ID: {
-      return {
-        ...state,
-        dogById: payload,
-      };
-    };
-
     case GET_DOG_BY_NAME: {
       return {
         ...state,
         allDogs: payload,
+      };
+    };
+
+    case GET_DOG_BY_ID: {
+      return {
+        ...state,
+        dogById: payload,
       };
     };
 
@@ -48,14 +48,12 @@ const rootReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         allTemperaments: payload,
-        allTemperamentsFilter: payload
       };
     };
 
     case POST_DOG: {
       return {
         ...state,
-        newDogs: [...state.newDogs, payload]
       };
     };
 

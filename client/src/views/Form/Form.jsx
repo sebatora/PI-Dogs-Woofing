@@ -160,12 +160,14 @@ function Form () {
           </div>
         </form>
 
-        {formData.temperaments.map(temp =>
-          <div key={temp}>
-          <p>{temp}</p>
-          <button onClick={() => handleTemperamentDelete(temp)}>X</button>
+        <div className={style.formDataTemp}>
+          {formData.temperaments.map(temp =>
+            <div className={style.formTemperaments} key={temp}>
+              <p>{temp}</p>
+              <button onClick={() => handleTemperamentDelete(temp)}>X</button>
+            </div>
+          )}
         </div>
-        )}
 
       </div>
   )

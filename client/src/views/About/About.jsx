@@ -15,11 +15,11 @@ import instagram from "../../assets/instagram.png"
 function About() {
   return (
     <div className={style.aboutContainer}>
-      <div className={style.aboutDetail}>
-        <div className={style.aboutImg}>
-          <img src={about} alt='Mi foto' />
-        </div>
+
+      <div className={style.aboutImg}>
+        <img src={about} alt='Mi foto' />
       </div>
+
       <div className={style.aboutInfo}>
         <p>
           Hi! My name is Sebastian Ariel Toranzo and I'm studying to be a FullStack Developer at SoyHenry.
@@ -28,7 +28,7 @@ function About() {
           I was born on January 11, 1990 in Buenos Aires, Argentina. I'm passionate about technology and music and I'm always open to face challenges, visualizing my goals and striving to achieve my purposes.
         </p>
         <p>
-          POWERED BY
+          DEVELOPED WITH
         </p>
         <p className={style.aboutTech}>
           <img src={html5} alt="HTML5"/>
@@ -46,6 +46,7 @@ function About() {
           <a href="http://www.instagram.com/sebatora/" target="_blank"> <img src={instagram} alt="Instagram"/> </a>
         </p>
       </div>
+
     </div>
   );
 }

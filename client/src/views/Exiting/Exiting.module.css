@@ -1,5 +1,5 @@
 .exitingContainer {
-  background-image: url("../../assets/dogBG.jpg");
+  background-image: url("../../assets/dogBGExit.jpg");
   margin: 0;
   padding: 1px;
   background-position: center center;
@@ -28,7 +28,7 @@
   width: 20%;
   height: fit-content;
   border-radius: 15px;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(15px);
   position: relative;
   left: 3%;
   top: 50%;
