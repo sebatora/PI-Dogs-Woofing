@@ -52,7 +52,7 @@ function Form () {
   const handleTemperamentSelect = (event) => {
     const newTemp = event.target.value;
     if(formData.temperaments.includes(newTemp)) {
-      alert(`${newTemp} ya se encuentra en la lista`)
+      alert(`${newTemp} is alredy selected`)
       return;
     }
     setFormData({...formData, temperaments: [...formData.temperaments, newTemp]});
@@ -82,8 +82,7 @@ function Form () {
 
     event.preventDefault();
     dispatch(postDog(formData))
-    console.log(formData.image);
-    alert("Perro añadido exitosamente")
+    alert("Your breed was created succesfully!")
 
     setFormData({
       name: "",
