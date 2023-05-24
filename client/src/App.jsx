@@ -1,5 +1,5 @@
 import './App.css'
-import { Landing, Home, Detail, Form, About, Exiting } from "./views"
+import { Landing, Home, Detail, Form, About, Exiting, Error } from "./views"
 import { Navbar } from './components';
 import { Route, Routes, useLocation } from "react-router-dom";
 import axios from 'axios';
@@ -23,6 +23,8 @@ function App() {
         <Route path="/create" element={<Form />} />
 
         <Route path="/about" element={<About />} />
+
+        <Route path="/error" element={<Error />} />
 
         <Route path="/exit" element={<Exiting />} />
 

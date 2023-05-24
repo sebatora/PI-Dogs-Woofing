@@ -5,5 +5,6 @@ import Form from './Form/Form';
 import About from './About/About';
 import Loading from './Loading/Loading';
 import Exiting from './Exiting/Exiting';
+import Error from './Error/Error';
 
-export { Landing, Home, Detail, Form, About, Loading, Exiting }
+export { Landing, Home, Detail, Form, About, Loading, Exiting, Error }

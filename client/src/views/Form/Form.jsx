@@ -117,21 +117,21 @@ function Form () {
           <div className={style.formData}>
             <label htmlFor="height">HEIGHT</label>
             <br />
-            <input type="text" name="height" id="height" placeholder="Height xx - xx cm" autoComplete="off" value={formData.height} onChange={handleInputChange}/>
+            <input type="text" name="height" id="height" placeholder="Min - Max height in cm" autoComplete="off" value={formData.height} onChange={handleInputChange}/>
             {errors.height && <span className={style.error}>{errors.height}</span>}
           </div>
 
           <div className={style.formData}>
             <label htmlFor="weight">WEIGHT</label>
             <br />
-            <input type="text" name="weight" id="weight" placeholder="Weight xx - xx kg" autoComplete="off" value={formData.weight} onChange={handleInputChange}/>
+            <input type="text" name="weight" id="weight" placeholder="Min - Max weight in cm" autoComplete="off" value={formData.weight} onChange={handleInputChange}/>
             {errors.weight && <span className={style.error}>{errors.weight}</span>}
           </div>
 
           <div className={style.formData}>
             <label htmlFor="life_span">LIFE SPAN</label>
             <br />
-            <input type="text" name="life_span" id="life_span" placeholder="Life span xx - xx years" autoComplete="off" value={formData.life_span} onChange={handleInputChange}/>
+            <input type="text" name="life_span" id="life_span" placeholder="Min - Max life span in years" autoComplete="off" value={formData.life_span} onChange={handleInputChange}/>
             {errors.life_span && <span className={style.error}>{errors.life_span}</span>}
           </div>
 

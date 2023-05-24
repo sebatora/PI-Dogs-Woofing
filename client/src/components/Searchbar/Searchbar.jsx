@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from "react";
 import style from "./SearchBar.module.css"
 import { useDispatch } from 'react-redux';
@@ -8,13 +8,16 @@ function Searchbar() {
 
   const dispatch = useDispatch()
 
-  const [name, setName] = useState("")
+  const [name, setName] = useState("");
 
   const handleInputChange = (event) => {
-      let { value } = event.target;
-      setName(value);
-      dispatch(getDogByName(value))
-  }
+    let { value } = event.target;
+    setName(value);
+  };
+  
+  useEffect(() => {
+    dispatch(getDogByName(name));
+  }, [name, dispatch]);
 
   return (
     <div className={style.searchContainer}>

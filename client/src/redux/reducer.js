@@ -1,10 +1,9 @@
 import { averageWeight } from "../utils/averageWeight";
-import { parseWeight } from "../utils/parseWeight";
 import { CLEAN_DETAIL, FILTER_DOGS_BY_ORIGIN, FILTER_TEMPERAMENTS, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, ORDER_ALPHABETIC, ORDER_WEIGHT, POST_DOG } from "./action-type";
 
 const initialState = {
   allDogs: [], 
-  allDogsFilter: [], // ES LA COPIA PARA PODER ORDENAR O FILTRAR
+  allDogsCopy: [], // ES LA COPIA PARA PODER ORDENAR O FILTRAR
   dogById: {},
   dogsByTemp: [],
   dogsByOrigin: [],
@@ -20,7 +19,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         allDogs: payload,
-        allDogsFilter: payload
+        allDogsCopy: payload
       };
     };
 
@@ -59,7 +58,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
     };
 
     case FILTER_TEMPERAMENTS: {
-      const allDogsTemp = state.allDogsFilter;
+      const allDogsTemp = state.allDogsCopy;
       const filterByTemp = payload === "All"
       ? allDogsTemp
       : allDogsTemp.filter(dog => dog.temperaments.find (temp => temp === payload))
@@ -71,7 +70,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
     };
 
     case FILTER_DOGS_BY_ORIGIN: {
-      const allDogsOrigin = state.allDogsFilter;
+      const allDogsOrigin = state.allDogsCopy;
       const filterByOrigin = payload === "API"
       ? allDogsOrigin.filter(dog => !dog.createInDb)
       : allDogsOrigin.filter(dog => dog.createInDb)
@@ -84,7 +83,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
     };
 
     case ORDER_ALPHABETIC: {
-      const allDogsName = state.allDogsFilter;
+      const allDogsName = state.allDogs;
       const orderAlphabetic = payload === true
       ? allDogsName.sort((a,b) => {
         if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
@@ -103,7 +102,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
     };
 
     // case ORDER_WEIGHT: {
-    //   const allDogsWeight = state.allDogsFilter;
+    //   const allDogsWeight = state.allDogsCopy;
     //   const orderWeight = payload === true
     //   ? allDogsWeight.sort((a,b) => {
     //     if (parseInt(a.weight) > parseInt(b.weight)) return 1;
@@ -122,7 +121,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
     // };
 
     case ORDER_WEIGHT: {
-      const allDogsWeight = state.allDogsFilter;
+      const allDogsWeight = state.allDogs;
       const orderWeight = payload === false
       ? allDogsWeight.sort((a, b) => {
         const averageA = averageWeight(a.weight);
@@ -142,7 +141,7 @@ const rootReducer = (state = initialState, {type, payload}) => {
     };
 
     // case ORDER_WEIGHT: {
-    //   const allDogsWeight = state.allDogsFilter;
+    //   const allDogsWeight = state.allDogsCopy;
     //   const orderWeight = payload === true
     //     ? allDogsWeight.sort((a, b) => {
     //         const weightA = parseWeight(a.weight);
