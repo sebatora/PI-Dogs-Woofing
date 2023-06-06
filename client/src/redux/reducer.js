@@ -1,5 +1,5 @@
 import { averageWeight } from "../utils/averageWeight";
-import { CLEAN_DETAIL, FILTER_DOGS_BY_ORIGIN, FILTER_TEMPERAMENTS, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, ORDER_ALPHABETIC, ORDER_WEIGHT, POST_DOG } from "./action-type";
+import { CLEAN_DETAIL, DELETE_DOG, FILTER_DOGS_BY_ORIGIN, FILTER_TEMPERAMENTS, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, ORDER_ALPHABETIC, ORDER_WEIGHT, POST_DOG } from "./action-type";
 
 const initialState = {
   allDogs: [], 
@@ -52,6 +52,12 @@ const rootReducer = (state = initialState, {type, payload}) => {
     };
 
     case POST_DOG: {
+      return {
+        ...state,
+      };
+    };
+
+    case DELETE_DOG: {
       return {
         ...state,
       };

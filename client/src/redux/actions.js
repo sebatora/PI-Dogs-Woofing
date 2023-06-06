@@ -1,4 +1,4 @@
-import { CLEAN_DETAIL, FILTER_DOGS_BY_ORIGIN, FILTER_TEMPERAMENTS, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, ORDER_ALPHABETIC, ORDER_WEIGHT, POST_DOG } from "./action-type";
+import { CLEAN_DETAIL, FILTER_DOGS_BY_ORIGIN, FILTER_TEMPERAMENTS, GET_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS, ORDER_ALPHABETIC, ORDER_WEIGHT, POST_DOG, DELETE_DOG } from "./action-type";
 import axios from "axios";
 const endpoint = "http://localhost:3001";
 
@@ -70,6 +70,20 @@ export const postDog = (newDog) => {
     catch (error) {
       return error.message;
     }
+  };
+};
+
+// Crea un nuevo perro
+export const deleteDog = (id) => {  
+  return async (dispatch) => {
+    // try {
+      const { data } = await axios.delete(`${endpoint}/dogs/${id}`)
+      return dispatch({ type: DELETE_DOG, payload: data });
+  //   }
+  //   catch (error) {
+  //     console.log(error.message);
+  //     return error.message;
+  //   }
   };
 };
 

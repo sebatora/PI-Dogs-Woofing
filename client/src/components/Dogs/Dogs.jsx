@@ -6,7 +6,7 @@ import style from "./Dogs.module.css"
 
 function Dogs() {
 
-  const {allDogs} = useSelector((state) => state);
+  const { allDogs } = useSelector((state) => state);
 
   // Paginado
 
@@ -26,7 +26,7 @@ function Dogs() {
 
       <div className={style.dogsCard}>
         {currentDogs.map(
-          ({ id, image, name, temperaments, weight }) => {
+          ({ id, image, name, temperaments, weight, createInDb }) => {
             return (
               <Dog 
                 key={id}
@@ -35,6 +35,7 @@ function Dogs() {
                 name={name}
                 temperaments={temperaments}
                 weight={weight}
+                createInDb={createInDb}
               />
             );
           }

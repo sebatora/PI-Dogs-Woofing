@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import style from "./Filters.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByOrigin, filterByTemp, orderAlphabetic, orderWeight } from "../../redux/actions";
@@ -9,20 +9,7 @@ function Filters({setCurrentPage}) {
   
   const dispatch = useDispatch();
   
-  const [filteredDogs, setFilteredDogs] = useState([]);
-  const { allDogs, allTemperaments, dogsByTemp, dogsByOrigin } = useSelector(state => state)
-
-  useEffect(() => {
-    const filteredDogs = allDogs.filter((dog) => {
-      const originMatch = dogsByOrigin === '' || dog.origen === dogsByOrigin;
-      const tempMatch = dogsByTemp === '' || dog.edad === dogsByTemp;
-
-      return originMatch && tempMatch;
-    });
-
-    setFilteredDogs(filteredDogs);
-  }, [allDogs, dogsByOrigin, dogsByTemp]);
-
+  const { allTemperaments } = useSelector(state => state)
 
   const handleFilterByTemp = (event) => {
     const temp = event.target.value;

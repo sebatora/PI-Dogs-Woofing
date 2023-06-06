@@ -1,3 +1,4 @@
+const deleteDog = require("../controllers/deleteDog");
 const getAllDogs = require("../controllers/getAllDogs");
 const getDogsById = require("../controllers/getDogById");
 const getDogsByName = require("../controllers/getDogsByName");
@@ -43,8 +44,20 @@ const postDogHandler = async (req, res) => {
   }
 }
 
+// Maneja la ruta DELETE de los perros
+const deleteDogHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const response = await deleteDog(id)
+    return res.status(200).json(response)
+  } catch (error) {
+    return res.status(404).json(error.message)
+  }
+}
+
 module.exports = {
   getDogsHandler,
   getDogHandler,
-  postDogHandler
+  postDogHandler,
+  deleteDogHandler
 }

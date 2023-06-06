@@ -34,7 +34,7 @@ function Form () {
     height: "",
     weight: "",
     life_span: "",
-    temperaments: [],
+    temperaments: "",
     image: ""
   });
 
@@ -124,7 +124,7 @@ function Form () {
           <div className={style.formData}>
             <label htmlFor="weight">WEIGHT</label>
             <br />
-            <input type="text" name="weight" id="weight" placeholder="Min - Max weight in cm" autoComplete="off" value={formData.weight} onChange={handleInputChange}/>
+            <input type="text" name="weight" id="weight" placeholder="Min - Max weight in kg" autoComplete="off" value={formData.weight} onChange={handleInputChange}/>
             {errors.weight && <span className={style.error}>{errors.weight}</span>}
           </div>
 
@@ -152,6 +152,7 @@ function Form () {
                 );
               })}
             </select>
+            {errors.temperaments && <span className={style.error}>{errors.temperaments}</span>}
           </div>
 
           <div>

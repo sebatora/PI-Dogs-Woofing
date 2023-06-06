@@ -1,5 +1,5 @@
 const dogRouter = require("express").Router();
-const { getDogsHandler, getDogHandler, postDogHandler } = require("../handlers/dogsHandler");
+const { getDogsHandler, getDogHandler, postDogHandler, deleteDogHandler } = require("../handlers/dogsHandler");
 
 // GET todos o por nombre
 dogRouter.get("/", getDogsHandler);
@@ -10,7 +10,7 @@ dogRouter.get("/:id", getDogHandler);
 // POST nuevo perro
 dogRouter.post("/", postDogHandler);
 
-// DELETE por nombre
-// dogRouter.delete("/", deleteDogsHandler);
+// DELETE por id
+dogRouter.delete("/:id", deleteDogHandler);
 
 module.exports = dogRouter;

@@ -80,3 +80,21 @@
   margin: 0.5%;
   color: var(--color-1);
 }
+
+.dogDelete{
+  background-color: rgba(255, 0, 0, 0.500);
+  border: 1px solid var(--color-2);
+  color: var(--color-1);
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin: 5px auto;
+  transition: .3s;
+}
+
+.dogDelete:hover{
+  background-color: red;
+}

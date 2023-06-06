@@ -27,6 +27,15 @@ const validation = (formData) => {
   if(!formData.life_span) errors.life_span = "This field is required";
   if(!regexLS.test(formData.life_span)) errors.life_span = "The format must be min - max";
 
+  // Image
+
+  // if(!formData.image) errors.image = "This field is required";
+
+  // Temperaments
+
+  // if(formData.temperaments.length === 0) errors.temperaments = "This field is required";
+  // if(formData.temperaments.length > 0) errors.temperaments = "";
+
   return errors;
 
 }
